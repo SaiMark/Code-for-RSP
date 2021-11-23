@@ -111,6 +111,40 @@ void searchInsert(Node**head, int newValue, int index)
 	temp->link=newNode;
 }
 
+void deletion(Node* head, int value)
+{
+	//Fast implementation;
+	Node* temp = head;
+	while(temp->link!=nullptr){
+    	if(temp->link->data==value)
+    	{
+    		temp->link=temp->link->link;
+    	}
+    	else
+    	{
+    		temp=temp->link;
+    	}
+    }
+}
+
+/*
+	Better way to implement deletion of node
+	Because the previous code do not have use delete
+	So at the end, it just link two part together but not delete the node in heap
+void deletion(Node* head, int value)
+{
+	Node * temp = head;
+	while(temp->link->data!=value)
+	{
+		temp = temp->link;
+	}
+	Node*todelete = temp->link;
+	temp->link = temp->link->link;
+
+	delete todelete;
+}
+*/
+
 int main(){
 	Node * head = new Node();
 	Node * second = new Node();
@@ -129,6 +163,7 @@ int main(){
 	insertAtTheEnd(&head,4);
 	insertAtTheEnd(&head,5);
 	searchInsert(&head,100, 4);
+	deletion(head,3);
 	printList(head);
 	
 	return 0;
