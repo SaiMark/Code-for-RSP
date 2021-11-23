@@ -76,6 +76,41 @@ void insertAtTheEnd(Node ** head, int newValue)
 	}
 */
 
+void insertAfter(Node* previous, int newValue)
+{
+	//1. Check if previous node is nullptr
+	if(previous == nullptr){
+		cout<<"Previous can not be nullptr"<<endl;
+		return;
+	}
+	//2. Prepare newNode
+	Node* newNode = new Node();
+	newNode->data = newValue;
+	//3. Insert newNode after previous
+	newNode->link = previous->link;
+	previous->link = newNode;
+}
+
+void searchInsert(Node**head, int newValue, int index)
+{
+	//Create a new Node
+	Node* newNode = new Node();
+	newNode->data = newValue;
+
+	//Searching for the position inside of the linked list
+	Node* temp = *head;
+	for(int i=0;i<index-1;i++){
+		if(temp->link!=nullptr){
+			temp=temp->link;
+		}
+	}
+
+	//Linked the newnode to the next node
+	newNode->link=temp->link;
+	//Link the previous node to the newNode
+	temp->link=newNode;
+}
+
 int main(){
 	Node * head = new Node();
 	Node * second = new Node();
@@ -88,10 +123,12 @@ int main(){
 	third->data = 3;
 	third->link = nullptr;
 
+	insertAfter(head, 1);
 	insertAtTheFront(&head, 0);
 	insertAtTheFront(&head, -1);
 	insertAtTheEnd(&head,4);
 	insertAtTheEnd(&head,5);
+	searchInsert(&head,100, 4);
 	printList(head);
 	
 	return 0;
