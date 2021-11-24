@@ -50,6 +50,17 @@ int find_minimum(Node* t)
 	return temp->data;
 }
 
+int find_maximum(Node* t)
+{
+	Node* temp = new Node();
+	temp = t;
+	while(temp->right!=nullptr){
+		temp = temp->right;
+	}
+
+	return temp->data;
+}
+
 void Inorder(Node* root)
 {
 	if(!root)
