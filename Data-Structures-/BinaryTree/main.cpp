@@ -39,20 +39,15 @@ struct Node* Insert(Node* root,int value)
 	return root;
 }
 
-struct Node* find_minimum(Node* t)
+int find_minimum(Node* t)
 {
 	Node* temp = new Node();
-	
-	if(t == nullptr){
-		return nullptr;
-	}
-
 	temp = t;
 	while(temp->left!=nullptr){
 		temp = temp->left;
 	}
 
-	return temp;
+	return temp->data;
 }
 
 void Inorder(Node* root)
@@ -99,6 +94,6 @@ int main()
 	Insert(root, 60);
 	Insert(root, 80);
 	Preorder(root);
-	//find_minimum(root);
+	cout<<find_minimum(root)<<endl;
 	return 0;
 }
