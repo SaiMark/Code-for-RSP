@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+//Adjacency List
 using namespace std;
 // Add edge
 void addEdge(vector<int> adj[], int s, int d) {
