@@ -10,15 +10,8 @@ void addEdge(vector<int>adj[], int s, int d) {
   adj[d].push_back(s);
 }
 
-// void dfs_r(int s){
-//     visited[s] = true; //Mark first node as visited
-//     cout << s << " ";
-//     for(int i = 0; i < vec[s].size(); i++){ //Vector of adjency nodes
-//         if(visited[vec[s][i]] == false) dfs_r(vec[s][i]); //If not visited, recurse it
-//     }
-// }
-/*
 //Iteration
+/*
 void dfs(const vector<vector<int>> &vec, int s){
     stack<int> stk;
     stk.push(s); //Push start node
@@ -35,7 +28,7 @@ void dfs(const vector<vector<int>> &vec, int s){
         }
     }
 }*/
- void initialize() {
+void initialize() {
     for(int i = 0;i < 10;++i){
         visited[i] = false;
     }
@@ -43,29 +36,38 @@ void dfs(const vector<vector<int>> &vec, int s){
 
 void DFS(int src){
 	visited[src] = true;
+    cout<<src<<"->";
 	for(int i=0 ;i<adj[src].size(); i++){
 		if(!visited[adj[src][i]]){
-            cout<<adj[src][i]<<"->";
 			DFS(adj[src][i]);
 		}
 	}
 }
 
+void printList(vector<int>adj[], int V){
+    for(int i=0;i<V;i++){
+        for(int j=0;j<adj[i].size();j++){
+            cout<<adj[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+}
+
 int main()
 {
 	addEdge(adj,0,1);
-	addEdge(adj,0,3);
-	addEdge(adj,0,2);
-	addEdge(adj,1,2);
+	addEdge(adj,1,3);
 	addEdge(adj,3,2);
 	addEdge(adj,2,4);
-	addEdge(adj,3,4);
 	//cout<<adj.size()<<endl;
 	for(int i=0;i<5;i++){
 		if(!visited[i]){
 			DFS(i);
 		}
 	}
+    cout<<"List check"<<endl;
+
+    printList(adj,5);
 
 
 	return 0;
