@@ -76,11 +76,7 @@ int main()
     addEdge(adj,3,2);
 	
 	//cout<<adj.size()<<endl;
-	for(int i=0;i<5;i++){
-		if(!visited[i]){
-			DFS(i);
-		}
-	}
+	DFS(0);
     cout<<"List check"<<endl;
 
     printList(adj,5);
